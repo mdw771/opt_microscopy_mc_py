@@ -12,7 +12,7 @@ ly1 = Layer(z0=-1, z1=0, mu_a=0, mu_s=0, g=1, n=1, clear=True, ambient=True)
 ly2 = Layer(z0=0, z1=np.inf, mu_a=0.1, mu_s=100, g=0.9, n=1, clear=False, ambient=False)
 ly3 = Layer(z0=np.inf, z1=np.inf, mu_a=0, mu_s=0, g=1, n=1, clear=True, ambient=True)
 ly_ls = [ly1, ly2, ly3]
-n_photon = 100
+n_photon = 1000
 w_thresh = 0.0001
 m = 10
 n_r = 500 # number of grid pixels along r
@@ -30,6 +30,7 @@ cpu_time = time.time() * 10000 % 10000
 np.random.seed(seed=int(cpu_time))
 
 # start loop
+t0 = time.time()
 for i_photon in range(n_photon):
     
     print('\r{:d}/{:d}'.format(i_photon+1, n_photon), end='')
@@ -76,3 +77,6 @@ plt.ylabel('Fluence')
 plt.title('Fluence vs. depth (N = {:d}, n = {:.2f})'.format(n_photon, ly2.n))
 fname = 'n_{:d}_ri_{:.2f}.tiff'.format(n_photon, ly2.n)
 plt.savefig(fname)
+
+t = time.time() - t0
+print('\nDone in {:.2f} s ({:.2f} hours). '.format(t, t/3600))
