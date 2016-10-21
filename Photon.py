@@ -2,7 +2,6 @@ import numpy as np
 
 
 class Photon():
-
     def __init__(self, x, y, ly_ls):
         # initialize photon
         self.x = x
@@ -111,10 +110,11 @@ class Photon():
             next_ly = ly_ls[self.layer + 1]
             direct = 1
         n_t = next_ly.n
-        a_t = np.arcsin(n_i * np.sin(a_i) / n_t)
         if n_i > n_t and a_i > np.arcsin(n_t / n_i):
+            a_t = np.pi / 2
             r = 1
         else:
+            a_t = np.arcsin(n_i * np.sin(a_i) / n_t)
             r = (np.sin(a_i - a_t) / np.sin(a_i + a_t)) ** 2 + (np.tan(a_i - a_t) / np.tan(a_i + a_t)) ** 2
             r *= 0.5
         xi = np.random.rand()
@@ -124,9 +124,9 @@ class Photon():
         else:
             # transmitted
             if direct == -1:
-                self.layer = self.layer - 1
+                self.layer -= self.layer
             else:
-                self.layer = self.layer + 1
+                self.layer += self.layer
             if self.layer == 0 or self.layer == len(ly_ls) - 1:
                 self.dead = True
             else:
