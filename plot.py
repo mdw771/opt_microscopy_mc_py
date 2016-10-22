@@ -17,6 +17,6 @@ for n in [1000, 10000, 100000, 1000000]:
     z = out_grids.get_zcoords()
     plt.semilogy(z[:-1], n100[:-1], z[:-1], n137[:-1])
     plt.ylim([1e-1, 1e1])
-    plt.legend([r'$n_rel$ = 1.00', r'$n_rel$ = 1.37'])
+    plt.legend([r'$n_{rel}$ = 1.00', r'$n_{rel}$ = 1.37'])
     plt.savefig('comb_n_{:d}'.format(n))
 
