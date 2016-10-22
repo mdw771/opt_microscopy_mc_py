@@ -9,10 +9,10 @@ np.set_printoptions(threshold=np.inf)
 
 # set parameters
 ly1 = Layer(z0=-1, z1=0, mu_a=0, mu_s=0, g=1, n=1, clear=True, ambient=True)
-ly2 = Layer(z0=0, z1=np.inf, mu_a=0.1, mu_s=100, g=0.9, n=1, clear=False, ambient=False)
+ly2 = Layer(z0=0, z1=np.inf, mu_a=0.1, mu_s=100, g=0.9, n=1.37, clear=False, ambient=False)
 ly3 = Layer(z0=np.inf, z1=np.inf, mu_a=0, mu_s=0, g=1, n=1, clear=True, ambient=True)
 ly_ls = [ly1, ly2, ly3]
-n_photon = 1000
+n_photon = 1000000
 w_thresh = 0.0001
 m = 10
 n_r = 500 # number of grid pixels along r
